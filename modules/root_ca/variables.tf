@@ -1,5 +1,5 @@
 variable "root_ca_validity_years" {
-  description = "How many years is root ca valid? 10, 20 or 25 years. Defaults to 10 yearsS"
+  description = "How many years is root ca valid? 10, 20 or 25 years. Defaults to 10 years"
   type        = number
   default     = 10
 

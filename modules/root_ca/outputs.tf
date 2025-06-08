@@ -11,4 +11,5 @@ output "root_ca_expiration_date" {
 output "root_ca_private_key" {
   description = "Private key of root ca used to sign sub ca cert"
   value       = tls_private_key.rsa_private_key.private_key_pem
+  sensitive   = true
 }
