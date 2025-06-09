@@ -17,3 +17,13 @@ resource "random_string" "common_name" {
 output "common_name" {
   value = random_string.common_name.id
 }
+
+// create random number for hours cert is valid
+resource "random_integer" "validity_period" {
+  min = 1
+  max = 100
+}
+
+output "validity_period" {
+  value = random_integer.validity_period.id
+}

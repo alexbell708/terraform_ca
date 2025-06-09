@@ -8,22 +8,22 @@ run "create_root_ca" {
   command = apply
 
   variables {
-    validity_period = 87660
+    validity_period = run.setup_tests.validity_period
     subject = {
       common_name = run.setup_tests.common_name
     }
-  }
-
-  # check validity period is 10 years
-  assert {
-    condition     = tls_self_signed_cert.root_ca.validity_period_hours == 87660
-    error_message = "Incorrect validity period - should be 877660 for 10 years"
   }
 
   # check common name is the same as test value
   assert {
     condition     = tls_self_signed_cert.root_ca.subject[0].common_name == run.setup_tests.common_name
     error_message = "Common name has not been correctly mapped"
+  }
+
+  # check validity period is the same as input
+  assert {
+    condition     = tls_self_signed_cert.root_ca.validity_period_hours == tonumber(run.setup_tests.validity_period)
+    error_message = "validity period has not been correctly mapped"
   }
 
   # check that cert created is root ca

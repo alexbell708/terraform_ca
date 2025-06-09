@@ -1,12 +1,3 @@
-variable "cert_type" {
-  description = "Which type of certificate is being created: root_ca, sub_ca or server"
-  type        = string
-  validation {
-    condition     = contains(["root_ca", "sub_ca", "server"], var.cert_type)
-    error_message = "Cert type must be root_ca, sub_ca or server"
-  }
-}
-
 variable "validity_period" {
   description = "How long, in hours, is the cert valid for"
   type        = number
